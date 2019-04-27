@@ -20,7 +20,6 @@ public class StoryOneController implements IRiverCrossingController{
 		crossingStrategy = new StoryOneCrossingStrategy();
 	}
 
-	@Override
 	public void newGame(ICrossingStrategy gameStrategy) {
 		crossingStrategy = gameStrategy;
 	}
@@ -92,7 +91,6 @@ public class StoryOneController implements IRiverCrossingController{
 		else return true;
 	}
 
-	@Override
 	public void doMove(List<ICrosser> crossers, boolean fromLeftToRightBank) {
 		for(ICrosser x : crossers) {
 			if(fromLeftToRightBank) {
@@ -103,7 +101,6 @@ public class StoryOneController implements IRiverCrossingController{
 		numberOfSails++;
 	}
 
-	@Override
 	public boolean canUndo() {
 		// TODO Auto-generated method stub
 		return false;

@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 
 public class MainMenuGUI extends Application {
 
-	@Override
-	public void start(Stage arg0) throws Exception {
+	public void start(Stage primaryStage) throws Exception {
+		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 		Scene scene = new Scene(root,800,500);
-		arg0.setScene(scene);
-		arg0.show();
+		stage.setScene(scene);
+		stage.show();
 	}
-	public static void main(String [] args) {
+	public static void main(String [] args) throws Exception {
 		launch(args);
 	}
 }

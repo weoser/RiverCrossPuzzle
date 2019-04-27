@@ -17,6 +17,7 @@ public class StoryOneController implements IRiverCrossingController{
 			ArrayList<ICrosser> boatRiders, ArrayList<ICrosser> leftBankCrossers,
 			ArrayList<ICrosser> rightBankCrossers) {
 		isBoatOnLeftBank = true;
+		crossingStrategy = new StoryOneCrossingStrategy();
 	}
 
 	@Override
@@ -60,25 +61,46 @@ public class StoryOneController implements IRiverCrossingController{
 		
 		if(fromLeftToRightBank) {
 			for(ICrosser x : crossers) {
-				rightBankCrossers.add(x);
 				leftBankCrossers.remove(x);
 			}
 		}
 		else {
 			for(ICrosser x : crossers) {
 				rightBankCrossers.remove(x);
-				leftBankCrossers.add(x);
 			}
 		}
 		for(ICrosser x : crossers) {
 			boatRiders.add(x);
 		}
-		return crossingStrategy.isValid(rightBankCrossers, leftBankCrossers, boatRiders);
+		
+		if(!crossingStrategy.isValid(rightBankCrossers, leftBankCrossers, boatRiders)) {
+			if(fromLeftToRightBank) {
+				for(ICrosser x : crossers) {
+					leftBankCrossers.add(x);
+				}
+			}
+			else {
+				for(ICrosser x : crossers) {
+					rightBankCrossers.add(x);
+				}
+			}
+			for(ICrosser x : crossers) {
+				boatRiders.remove(x);
+			}
+			return false;
+		}
+		else return true;
 	}
 
 	@Override
 	public void doMove(List<ICrosser> crossers, boolean fromLeftToRightBank) {
-		numberOfSails--;
+		for(ICrosser x : crossers) {
+			if(fromLeftToRightBank) {
+				rightBankCrossers.add(x);
+			}
+			else leftBankCrossers.add(x);
+		}
+		numberOfSails++;
 	}
 
 	@Override

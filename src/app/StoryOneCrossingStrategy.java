@@ -12,7 +12,6 @@ public class StoryOneCrossingStrategy implements ICrossingStrategy {
 	@Override
 	public boolean isValid(List<ICrosser> rightBankCrossers, List<ICrosser> leftBankCrossers,
 			List<ICrosser> boatRiders) {
-		
 		// boat validation
 		int flag = 0;
 		for(ICrosser x : boatRiders) {

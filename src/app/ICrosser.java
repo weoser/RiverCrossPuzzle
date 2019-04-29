@@ -39,6 +39,5 @@ public interface ICrosser {
 	* @return gets label of the crosser depending on the current game
 	*/
 	public String getLabelToBeShown();
-	
 	}
 

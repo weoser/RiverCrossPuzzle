@@ -10,6 +10,11 @@ public class Herbivore implements ICrosser{
 
 	private double weight;
 	public static final int eatingRank = 1;
+	public Herbivore(double weight) {
+		super();
+		this.weight = weight;
+	}
+
 	@Override
 	public boolean canSail() {
 		// TODO Auto-generated method stub
@@ -44,7 +49,6 @@ public class Herbivore implements ICrosser{
 			e.printStackTrace();
 		}
 		
-		// TODO Auto-generated method stub
 		return image;
 	}
 
